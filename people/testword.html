@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>打字效果</title>
+  <style>
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    .button{
+      display: inline-block;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      padding: 2px 5px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    p.word_box {
+        height: 1.5em;
+        line-height: 1.5em;
+        white-space: nowrap;
+        border-right: 2px solid transparent;
+        overflow: hidden;
+    }
+    .word_animate1{
+        width: 15em;
+        animation: typing 3.5s steps(15, end), blink-caret .75s step-end ;
+        /* animation: typing 4.5s steps(15, end) infinite, blink-caret .75s step-end infinite; */
+    }
+    .word_animate2{
+        width: 0;
+        /* animation: typing2 6.5s steps(50, end), blink-caret .75s step-end infinite; */
+        /* animation: typing2 7s steps(50, end) 6.5s infinite, blink-caret .75s step-end 6.5s infinite; */
+        /* animation: typing2 7s steps(50 end), changeh 1s steps(1, end) 5s 1 forwards, blink-caret .75s step-end infinite; */
+    }
+    /* 打印效果 */
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 15em; }
+    }
+    @keyframes typing2 {
+      from { width: 0; }
+      to { width: 50em; }
+    }
+    @keyframes changeh {
+      from { height: 1.5em; white-space: nowrap;}
+      to { height: 3em; white-space: pre-wrap;}
+    }
+    /* 光标闪啊闪 */
+    @keyframes blink-caret {
+      from, to { box-shadow: 1px 0 0 0 transparent; }
+      50% { box-shadow: 1px 0 0 0; }
+    }
+
+    
+    /* css绘制图形、动画 */
+    .css_box{
+      width: 500px;
+      height: 500px;
+      padding: 0;
+      margin: 10px auto;
+      background-color: #abc;
+      /* background-color: #535050; */
+    }
+    .head_box{
+      width: 70px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      margin: 0 auto;
+      margin-top: 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: -2px -20px 78px #333;
+    }
+    .head_box>span{
+      display: inline-block;
+      /* border: 1px solid #ddd; */
+    }
+    .head_box>.eye{
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin: 20px 5px;
+      background-color: #535050;
+      animation: all ease-in 0.1s infinite;
+      /* box-shadow: 2px 2px 25px #fff; */
+    }
+    .head_box>.mouth{
+      height: 5px;
+      width: 28px;
+      border-radius: 30%;
+      background-color: orangered;
+      animation: mouth ease-in 0.9s infinite;
+    }
+    /* 身体 */
+    .body_box{
+      width: 120px;
+      height: 200px;
+      background-color: #f0f0f0;
+      margin: 3px auto;
+      border-radius: 45%;
+      position: relative;
+    }
+    .body_box>.fastener{
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: orange;
+      position: absolute;
+      left: 50%;
+      margin-left: -8px;
+    }
+    .body_box>.fastener-1{
+      top: 50px;
+    }
+    .body_box>.fastener-2{
+      top: 100px;
+    }
+    .body_box>.fastener-3{
+      top: 150px;
+    }
+    .hand_box{
+      display: inline-block;
+      width: 30px;
+      height: 160px;
+      border-radius: 100%;
+      background-color: #f0f0f0;
+      position: absolute;
+      top: 30px; 
+    }
+    .hand_box.hand_l{
+      left: -30px;
+      box-shadow: 2px 2px 55px #fff;
+      transform: rotate(20deg);
+    }
+    .hand_box.hand_r{
+      right: -30px;
+      box-shadow: -2px -2px 55px #fff;
+      transform: rotate(-20deg);
+      /* animation: wing1 ease-in 2.9s infinite; */
+    }
+    
+    .css_box:hover .head_box>.eye{
+      background-color: orange;
+      transform: scale(0.8,0.8);
+      box-shadow: 2px 2px 25px orange;
+    }
+    .css_box:hover .people_box{
+      animation: wing2 ease-in 2.9s infinite;
+    }
+    @keyframes mouth {
+      from {transform: scale(0.75,0.75); background-color: transparent;}
+      to {transform: scale(1,1.5); background-color: orange;}
+    }
+    
+    @keyframes wing1 {
+      0% {transform: rotate(0deg);}
+      25% {transform: rotate(45deg);}
+      50% {transform: rotate(90deg);}
+      75% {transform: rotate(135deg);}
+      90% {transform: rotate(180deg);}
+      100% {transform: rotate(0deg);}
+    }
+    @keyframes wing2 {
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+    }
+
+    /* foot  */
+    .foot_box{
+      width: 120px;
+      height: 80px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .foot_box>span{
+      display: inline-block;
+      width: 15px;
+      height: 55px;
+      margin: 0 8px;
+      border-radius: 30%;
+      background-color: #f0f0f0;
+    }
+    .foot_box>.foot_l{
+      transform: rotate(9deg);
+    }
+    .foot_box>.foot_r{
+      transform: rotate(-9deg);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p class="word_box word_animate1">我要打几个字，哈哈哈，打完了！</p>
+    <div class="button">带音效再打一个试试</div>
+    <p class="word_box word_animate2">那我多打几个字吧，你猜猜我打几个字呢？猜不到吧，啦啦啦啦啦，我也布吉岛该打多少字，所以就~ 随便咯</p>
+    
+    <!-- <video controls="" autoplay="" loop="loop" name="media"><source src="https://www.zhangxinxu.com/study/201901/keyboard.mp3" type="audio/mpeg"></video> -->
+    <audio src="https://www.zhangxinxu.com/study/201901/keyboard.mp3" autoplay type="audio/mpeg"></audio>
+  </div>
+  <div class="css_box">
+    <div class="people_box">
+      <!-- 头 -->
+      <div class="head_box">
+          <span class="eye eye_l"></span>
+          <span class="eye eye_r"></span>
+          <span class="mouth"></span>
+        </div>
+        <!-- 身体 -->
+        <div class="body_box">
+          <i class="fastener fastener-1"></i>
+          <i class="fastener fastener-2"></i>
+          <i class="fastener fastener-3"></i>
+          <span class="hand_box hand_l"></span>
+          <span class="hand_box hand_r"></span>
+        </div>
+        <!-- 脚 -->
+        <div class="foot_box">
+          <span class="foot_l"></span>
+          <span class="foot_r"></span>
+        </div>
+    </div>
+    
+  </div>
+</body>
+<script>
+  window.onload = function(){
+    var typing = document.querySelector('p.word_animate1');	
+    var audio = document.querySelector('audio');
+    var button = document.querySelector('.button');
+    typing.addEventListener('animationend', function () {
+      button.removeAttribute('hidden');	
+    });
+    button.onclick = function () {
+      if (typing) {
+        typing.classList.remove('word_animate1');
+        setTimeout(function () {
+          typing.classList.add('word_animate1');
+        }, 10);
+      }
+      if (audio) {
+        audio.play();	
+      }
+    };
+  }
+  
+    
+
+  </script>
+    
+</html>
