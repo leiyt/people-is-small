@@ -66,16 +66,44 @@
       width: 70px;
       height: 90px;
       border-radius: 50%;
-      background-color: #f0f0f0;
+      background-color: #F0F09B;
       margin: 0 auto;
       margin-top: 40px;
       text-align: center;
+      box-shadow: 0px -4px 16px #333;
       position: relative;
-      box-shadow: -2px -20px 78px #333;
     }
     .head_box>span{
       display: inline-block;
       /* border: 1px solid #ddd; */
+    }
+    /* 头发 */
+    .head_box>.hair{
+      width: 4px;
+      height: 25px;
+      border-radius: 2px;
+      background-color: #585353;
+      position: absolute;
+      top: -24px;
+      left: 50%;
+    }
+    .head_box>.hair::before,.head_box>.hair::after{
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 25px;
+      border-radius: 2px;
+      background-color: #585353;
+      position: absolute;
+      top: 5px;
+    }
+    .head_box>.hair::before{
+      left: -20px;
+      transform: rotate(-25deg);
+    }
+    .head_box>.hair::after{
+      left: 20px;
+      transform: rotate(25deg);
     }
     .head_box>.eye{
       width: 12px;
@@ -83,7 +111,7 @@
       border-radius: 50%;
       margin: 20px 5px;
       background-color: #535050;
-      animation: all ease-in 0.1s infinite;
+      animation: eyes ease-in 2.5s infinite;
       /* box-shadow: 2px 2px 25px #fff; */
     }
     .head_box>.mouth{
@@ -97,7 +125,7 @@
     .body_box{
       width: 120px;
       height: 200px;
-      background-color: #f0f0f0;
+      background-color: #F0F09B;
       margin: 3px auto;
       border-radius: 45%;
       position: relative;
@@ -126,7 +154,7 @@
       width: 30px;
       height: 160px;
       border-radius: 100%;
-      background-color: #f0f0f0;
+      background-color: #F0F09B;
       position: absolute;
       top: 30px; 
     }
@@ -153,6 +181,16 @@
     @keyframes mouth {
       from {transform: scale(0.75,0.75); background-color: transparent;}
       to {transform: scale(1,1.5); background-color: orange;}
+    }
+
+    @keyframes eyes {
+      /* from {background-color: #535050;}
+      to {background-color: red;} */
+      0% {background-color: #535050;}
+      25% {background-color: #999;}
+      50% {background-color: #b67c7c;}
+      75% {background-color: rgb(228, 72, 72);}
+      100% {background-color: red;} 
     }
     
     @keyframes wing1 {
@@ -182,7 +220,7 @@
       height: 55px;
       margin: 0 8px;
       border-radius: 30%;
-      background-color: #f0f0f0;
+      background-color: #F0F09B;
     }
     .foot_box>.foot_l{
       transform: rotate(9deg);
@@ -199,23 +237,25 @@
     <div class="people_box">
       <!-- 头 -->
       <div class="head_box">
-          <span class="eye eye_l"></span>
-          <span class="eye eye_r"></span>
-          <span class="mouth"></span>
-        </div>
-        <!-- 身体 -->
-        <div class="body_box">
-          <i class="fastener fastener-1"></i>
-          <i class="fastener fastener-2"></i>
-          <i class="fastener fastener-3"></i>
-          <span class="hand_box hand_l"></span>
-          <span class="hand_box hand_r"></span>
-        </div>
-        <!-- 脚 -->
-        <div class="foot_box">
-          <span class="foot_l"></span>
-          <span class="foot_r"></span>
-        </div>
+        <!-- 头发 -->
+        <span class="hair"></span>
+        <span class="eye eye_l"></span>
+        <span class="eye eye_r"></span>
+        <span class="mouth"></span>
+      </div>
+      <!-- 身体 -->
+      <div class="body_box">
+        <i class="fastener fastener-1"></i>
+        <i class="fastener fastener-2"></i>
+        <i class="fastener fastener-3"></i>
+        <span class="hand_box hand_l"></span>
+        <span class="hand_box hand_r"></span>
+      </div>
+      <!-- 脚 -->
+      <div class="foot_box">
+        <span class="foot_l"></span>
+        <span class="foot_r"></span>
+      </div>
     </div>
   </div>
 
